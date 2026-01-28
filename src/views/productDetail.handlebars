@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{product.title}} - PeriphStore</title>
+    <link rel="stylesheet" href="/css/productDetail.css">
+</head>
+
+<body>
+    <div class="product-detail-container">
+        <h1 class="product-title">{{product.title}}</h1>
+
+        <div class="product-price">$ {{product.price}}</div>
+
+        <div class="product-info">
+            <p><strong>Categoría:</strong> {{product.category}}</p>
+            <p><strong>Código:</strong> {{product.code}}</p>
+            <p><strong>Stock:</strong>
+                {{#if product.isAvailable}}
+                <span class="stock-available">{{product.stock}} unidades disponibles</span>
+                {{else}}
+                <span class="stock-unavailable">AGOTADO</span>
+                {{/if}}
+            </p>
+        </div>
+
+        <div class="product-description">
+            <h3>Descripción</h3>
+            <p>{{product.description}}</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/products/views" class="btn btn-back">← Volver</a>
+            <button class="btn btn-cart {{#if product.isAvailable}}available{{/if}}" {{#unless
+                product.isAvailable}}disabled{{/unless}}>
+                Agregar al carrito
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

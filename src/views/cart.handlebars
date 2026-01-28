@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - PeriphStore</title>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+
+<body>
+    <div class="cart-container">
+        <div class="cart-header">
+            <h1 class="cart-title">Tu Carrito</h1>
+        </div>
+
+        {{#if isEmpty}}
+        <div class="empty-cart">
+            <h2>🛒 Tu carrito está vacío</h2>
+            <p>Agrega productos para continuar con tu compra</p>
+            <a href="/products/views" class="btn btn-continue">Ver productos</a>
+        </div>
+        {{else}}
+        <div class="cart-products">
+            {{#each products}}
+            <div class="cart-item">
+                <div class="product-image">📦</div>
+                <div class="product-info">
+                    <div class="product-name">{{this.product.title}}</div>
+                    <div class="product-category">{{this.product.category}}</div>
+                    <div class="product-price">$ {{this.product.price}}</div>
+                </div>
+                <div class="quantity">
+                    <button class="quantity-btn">-</button>
+                    <span class="quantity-value">{{this.quantity}}</span>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <button class="remove-btn">Eliminar</button>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="cart-summary">
+            <h2 class="summary-title">Resumen del pedido</h2>
+
+            <div class="summary-row">
+                <span>Subtotal ({{products.length}} productos):</span>
+                <span>$ {{subtotal}}</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Envío:</span>
+                <span>$ 0</span>
+            </div>
+
+            <div class="total-row">
+                <span>Total:</span>
+                <span>$ {{total}}</span>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/products/views" class="btn btn-continue">Seguir comprando</a>
+                <button class="btn btn-checkout">Finalizar compra</button>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+
+</html>
+

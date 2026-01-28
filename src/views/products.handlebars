@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/products.css" />
+    <title>Tienda de Periféricos</title>
+</head>
+
+<body>
+    <h1>PeriphStore - Productos</h1>
+
+    <div class="products-container">
+        {{#each payload}}
+        <div class="product">
+            <h3>{{this.title}}</h3>
+            <p><strong>Precio:</strong> ${{this.price}}</p>
+            <p><strong>Categoría:</strong> {{this.category}}</p>
+            <p><strong>Stock:</strong>
+                {{#if this.isAvailable}}
+                {{this.stock}} unidades disponibles
+                {{else}}
+                <span class="stock-agotado">AGOTADO</span>
+                {{/if}}
+            </p>
+            <p>{{this.description}}</p>
+
+            <div class="actions">
+                <a href="/products/views/{{this._id}}" class="btn btn-detail">Ver detalle</a>
+                {{#if this.isAvailable}}
+                <button class="btn btn-cart">Agregar al carrito</button>
+                {{else}}
+                <button class="btn btn-cart" disabled >Agregar al carrito</button>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <div class="page-info">
+        Página {{page}} de {{totalPages}}
+    </div>
+
+    <div class="pagination">
+        {{#if hasPrevPage}}
+        <a href="{{prevLink}}">&laquo; Anterior</a>
+        {{/if}}
+
+        {{#if hasNextPage}}
+        <a href="{{nextLink}}">Siguiente &raquo;</a>
+        {{/if}}
+    </div>
+</body>
+
+</html>
