@@ -131,4 +131,19 @@ router.get('/views/:pid', async (req, res) => {
     }
 });
 
+router.get('/:pid', async (req, res) => {
+    try {
+        const { pid } = req.params;
+        const product = await Product.findById(pid);
+
+        if (!product) {
+            return res.status(404).json({ status: 'error', message: 'Producto no encontrado' });
+        }
+
+        res.json({ status: 'success', payload: product });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message });
+    }
+});
+
 export default router;
