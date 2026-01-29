@@ -146,7 +146,7 @@ router.get('/:pid', async (req, res) => {
     }
 });
 
-// Ruta para crear un nuevo producto (La que usaremos en Postman)
+// ruta para crear un producto 
 router.post('/', async (req, res) => {
     try {
         const newProduct = req.body;
