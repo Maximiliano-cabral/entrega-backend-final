@@ -138,7 +138,7 @@ router.put('/:cid', async (req, res) => {
             cid,
             { products },
             { new: true, runValidators: true }
-        );
+        ).populate('products.product') ;
 
         if (!updatedCart) {
             return res.status(404).json({ status: 'error', message: 'Carrito no encontrado' });

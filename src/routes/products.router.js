@@ -146,4 +146,20 @@ router.get('/:pid', async (req, res) => {
     }
 });
 
+// Ruta para crear un nuevo producto (La que usaremos en Postman)
+router.post('/', async (req, res) => {
+    try {
+        const newProduct = req.body;
+        
+        const result = await Product.create(newProduct);
+
+        res.status(201).json({
+            status: 'success',
+            payload: result
+        });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message });
+    }
+});
+
 export default router;
