@@ -24,7 +24,6 @@ Sistema backend completo para e-commerce con gestión de productos y carritos de
 1. Clona el repositorio
 ```bash
 git clone <url-del-repositorio>
-cd <nombre-del-proyecto>
 ```
 
 2. Instala las dependencias
@@ -34,8 +33,7 @@ npm install
 
 3. Inicia MongoDB
 ```bash
-# Asegúrate de que MongoDB esté corriendo
-mongod
+Configura tu archivo `.env` con la variable `MONGO_URL`
 ```
 
 4. Inicia el servidor
@@ -43,7 +41,7 @@ mongod
 npm start
 ```
 
-El servidor estará disponible en `http://localhost:3000` (o el puerto configurado).
+El servidor estará disponible en `http://localhost:8080`.
 
 ##  Documentación de la API
 
@@ -129,10 +127,5 @@ El proyecto ha sido probado exhaustivamente con Postman:
 
 ### Base de Datos
 
-La aplicación se conecta automáticamente a:
-```
-mongodb://localhost:27017/ecommerce
-```
-
-Puedes modificar esta URL en el archivo de configuración.
+La aplicación utiliza MongoDB Atlas. Asegúrate de configurar la variable MONGO_URL en tu archivo .env
 
