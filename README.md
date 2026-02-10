@@ -38,7 +38,7 @@ Configura tu archivo `.env` con la variable `MONGO_URL`
 
 4. Inicia el servidor
 ```bash
-npm start
+npm run dev  
 ```
 
 El servidor estará disponible en `http://localhost:8080`.
